@@ -22,20 +22,21 @@ function playRound(playerSelection, computerSelection) {
     if (playerPick === 'rock' || playerPick === 'paper' || playerPick === 'scissors') {
     console.log(`You chose ${playerPick}.`);
     console.log(`The computer chose ${computerSelection}.`);
+    let message;
 
     if (playerPick === 'rock' && computerSelection === 'scissors' || playerPick === 'paper' && computerSelection === 'rock'|| playerPick === 'scissors' && computerSelection === 'paper') {
-        console.log(`You Win! ${playerPick} beats ${computerSelection}.`); } 
+            message = `You Win! ${playerPick} beats ${computerSelection}.`; } 
         
         else if (computerSelection === 'rock' && playerPick === 'scissors' || computerSelection === 'paper' && playerPick === 'rock'|| computerSelection === 'scissors' && playerPick === 'paper') {
-        console.log(`You Lose! ${computerSelection} beats ${playerPick}.`); }
+            message = `You Lose! ${computerSelection} beats ${playerPick}.`; }
         
         else if (computerSelection === playerPick) {
-        console.log(`It's a tie! Both of you picked ${playerPick}.`); } 
+            message = `It's a tie! Both of you picked ${playerPick}.`; } 
         
         else {
-        console.log(`something is broken.`);}
+            message = `something is broken.`;}
 
-        // return declaredWinner;
+    return message;
 
     } else {
         console.log("please input a valid entry of: 'rock', 'paper', or 'scissors'.");

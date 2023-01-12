@@ -19,22 +19,22 @@ function getComputerChoice(array) {
 
 function playRound(playerSelection, computerSelection) {
     // your code here!
-    let playerPick = playerSelection.toLowerCase();
-    if (playerPick === 'rock' || playerPick === 'paper' || playerPick === 'scissors') {
-    console.log(`You chose ${playerPick}.`);
+    playerSelection = playerSelection.toLowerCase();
+    if (playerSelection === 'rock' || playerSelection === 'paper' || playerSelection === 'scissors') {
+    console.log(`You chose ${playerSelection}.`);
     console.log(`The computer chose ${computerSelection}.`);
 
 
-    if (playerPick === 'rock' && computerSelection === 'scissors' || playerPick === 'paper' && computerSelection === 'rock'|| playerPick === 'scissors' && computerSelection === 'paper') {
+    if (playerSelection === 'rock' && computerSelection === 'scissors' || playerSelection === 'paper' && computerSelection === 'rock'|| playerSelection === 'scissors' && computerSelection === 'paper') {
         yourPoints += 1; 
-            console.log(`You Win! ${playerPick} beats ${computerSelection}.`); } 
+            console.log(`You Win! ${playerSelection} beats ${computerSelection}.`); } 
         
-        else if (computerSelection === 'rock' && playerPick === 'scissors' || computerSelection === 'paper' && playerPick === 'rock'|| computerSelection === 'scissors' && playerPick === 'paper') {
+        else if (computerSelection === 'rock' && playerSelection === 'scissors' || computerSelection === 'paper' && playerSelection === 'rock'|| computerSelection === 'scissors' && playerSelection === 'paper') {
             computerPoints += 1;
-            console.log(`You Lose! ${computerSelection} beats ${playerPick}.`); }
+            console.log(`You Lose! ${computerSelection} beats ${playerSelection}.`); }
         
-        else if (computerSelection === playerPick) {
-            console.log(`It's a tie! Both of you picked ${playerPick}.`); } 
+        else if (computerSelection === playerSelection) {
+            console.log(`It's a tie! Both of you picked ${playerSelection}.`); } 
         
         else {
             console.log(`something is broken.`);}
@@ -43,7 +43,8 @@ function playRound(playerSelection, computerSelection) {
 
 
     } else {
-        console.log("please input a valid entry of: 'rock', 'paper', or 'scissors'.");
+        alert("Please input a valid entry of: 'rock', 'paper', or 'scissors'. Round forfeit.");
+        console.log(`Invalid input, Round forfeit.`)
     }
 
   }
@@ -56,7 +57,19 @@ function playRound(playerSelection, computerSelection) {
         playRound(playerSelection, computerSelection);
    // your code here!
 }
+
+    // Game over! Reset points post game:
+        yourPoints = 0;
+        computerPoints = 0;
+        
+const playAgain = prompt('Game over! Would you like to play again? (yes/no)', 'yes');
+if (playAgain.toLowerCase() === 'yes' || playAgain.toLowerCase() === 'y') {
+    console.log(`NEW GAME!`);
+    game();
+}
+
 // insert code here that would rerun the loop upon user entering y/n or invalid data.
+
   }
 
 
@@ -72,4 +85,7 @@ function playRound(playerSelection, computerSelection) {
 
 // console.log(playRound(playerSelection, computerSelection));
 game();
+
+
+
 

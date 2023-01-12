@@ -44,7 +44,7 @@ function playRound(playerSelection, computerSelection) {
 
     } else {
         alert("Please input a valid entry of: 'rock', 'paper', or 'scissors'. Round forfeit.");
-        console.log(`Invalid input, Round forfeit.`)
+        console.log(`Invalid input, Round forfeit.`);
     }
 
   }
@@ -66,6 +66,9 @@ const playAgain = prompt('Game over! Would you like to play again? (yes/no)', 'y
 if (playAgain.toLowerCase() === 'yes' || playAgain.toLowerCase() === 'y') {
     console.log(`NEW GAME!`);
     game();
+}
+else {
+    alert(`Goodbye!`);
 }
 
 // insert code here that would rerun the loop upon user entering y/n or invalid data.

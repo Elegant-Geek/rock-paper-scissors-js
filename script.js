@@ -18,8 +18,8 @@ function getComputerChoice(array) {
 }
 
 function playRound(playerSelection, computerSelection) {
-    playerSelection = playerSelection.toLowerCase();
-    if (playerSelection === 'rock' || playerSelection === 'paper' || playerSelection === 'scissors') {
+    if (playerSelection.toLowerCase() === 'rock' || playerSelection.toLowerCase() === 'paper' || playerSelection.toLowerCase() === 'scissors') {
+        playerSelection = playerSelection.toLowerCase();
         // UNCOMMENT THESE TWO LINES FOR MORE FEEDBACK IN CONSOLE! <<------------------------------------------------------------------
     // console.log(`You chose ${playerSelection}.`);
     // console.log(`The computer chose ${computerSelection}.`);
@@ -52,7 +52,12 @@ function playRound(playerSelection, computerSelection) {
   function game() {
     for (let i = 0; i < 5; i++) {
         // enter user prompt option for the start of each new round:
+        // if the input is NULL (aka they hit the cancel button, an alert of goodbye shows up.)
         const playerSelection = prompt('Enter rock, paper, or scissors.');
+        if (playerSelection === null) {
+            alert(`Goodbye!`);
+            return;
+        }
         const computerSelection = getComputerChoice(choices);
         playRound(playerSelection, computerSelection);
    // your code here!

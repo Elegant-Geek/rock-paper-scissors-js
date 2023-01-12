@@ -18,11 +18,11 @@ function getComputerChoice(array) {
 }
 
 function playRound(playerSelection, computerSelection) {
-    // your code here!
     playerSelection = playerSelection.toLowerCase();
     if (playerSelection === 'rock' || playerSelection === 'paper' || playerSelection === 'scissors') {
-    console.log(`You chose ${playerSelection}.`);
-    console.log(`The computer chose ${computerSelection}.`);
+        // UNCOMMENT THESE TWO LINES FOR MORE FEEDBACK IN CONSOLE! <<------------------------------------------------------------------
+    // console.log(`You chose ${playerSelection}.`);
+    // console.log(`The computer chose ${computerSelection}.`);
 
 
     if (playerSelection === 'rock' && computerSelection === 'scissors' || playerSelection === 'paper' && computerSelection === 'rock'|| playerSelection === 'scissors' && computerSelection === 'paper') {

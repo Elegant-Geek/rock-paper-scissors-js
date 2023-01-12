@@ -1,6 +1,7 @@
 let choices = ['rock', 'paper', 'scissors'];
 // picks index number from 0 to array's max length
-
+let yourPoints = 0;
+let computerPoints = 0;
 // lets randomize from 0 to 2
 function getComputerChoice(array) {
     // lets randomize from 0 to 2 with this simple test.
@@ -22,21 +23,24 @@ function playRound(playerSelection, computerSelection) {
     if (playerPick === 'rock' || playerPick === 'paper' || playerPick === 'scissors') {
     console.log(`You chose ${playerPick}.`);
     console.log(`The computer chose ${computerSelection}.`);
-    let message;
+
 
     if (playerPick === 'rock' && computerSelection === 'scissors' || playerPick === 'paper' && computerSelection === 'rock'|| playerPick === 'scissors' && computerSelection === 'paper') {
-            message = `You Win! ${playerPick} beats ${computerSelection}.`; } 
+        yourPoints += 1; 
+            console.log(`You Win! ${playerPick} beats ${computerSelection}.`); } 
         
         else if (computerSelection === 'rock' && playerPick === 'scissors' || computerSelection === 'paper' && playerPick === 'rock'|| computerSelection === 'scissors' && playerPick === 'paper') {
-            message = `You Lose! ${computerSelection} beats ${playerPick}.`; }
+            computerPoints += 1;
+            console.log(`You Lose! ${computerSelection} beats ${playerPick}.`); }
         
         else if (computerSelection === playerPick) {
-            message = `It's a tie! Both of you picked ${playerPick}.`; } 
+            console.log(`It's a tie! Both of you picked ${playerPick}.`); } 
         
         else {
-            message = `something is broken.`;}
+            console.log(`something is broken.`);}
+        
+        console.log(`Your score: ${yourPoints} Computer's score: ${computerPoints}`);
 
-    return message;
 
     } else {
         console.log("please input a valid entry of: 'rock', 'paper', or 'scissors'.");
@@ -44,6 +48,16 @@ function playRound(playerSelection, computerSelection) {
 
   }
    
+  function game() {
+    for (let i = 0; i < 5; i++) {
+        // enter user prompt option for the start of each new round:
+        
+        const computerSelection = getComputerChoice(choices);
+        playRound(playerSelection, computerSelection);
+   // your code here!
+}
+// insert code here that would rerun the loop upon user entering y/n or invalid data.
+  }
 
 
 // ----------------------CODE TESTING -----------------------------
@@ -56,6 +70,6 @@ function playRound(playerSelection, computerSelection) {
 
 // Their provided test code for running a game:
 const playerSelection = "rock";
-const computerSelection = getComputerChoice(choices);
-console.log(playRound(playerSelection, computerSelection));
+// console.log(playRound(playerSelection, computerSelection));
+game();
 

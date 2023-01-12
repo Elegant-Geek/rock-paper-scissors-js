@@ -51,7 +51,7 @@ function playRound(playerSelection, computerSelection) {
   function game() {
     for (let i = 0; i < 5; i++) {
         // enter user prompt option for the start of each new round:
-        
+        const playerSelection = prompt('Enter rock, paper, or scissors.');
         const computerSelection = getComputerChoice(choices);
         playRound(playerSelection, computerSelection);
    // your code here!
@@ -69,7 +69,7 @@ function playRound(playerSelection, computerSelection) {
 // console.log(getComputerChoice(choices));
 
 // Their provided test code for running a game:
-const playerSelection = "rock";
+
 // console.log(playRound(playerSelection, computerSelection));
 game();
 

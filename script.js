@@ -54,6 +54,7 @@ function playRound(playerSelection, computerSelection) {
         // enter user prompt option for the start of each new round:
         const playerSelection = prompt('Enter rock, paper, or scissors.');
         // if the input is NULL (aka they hit the cancel button, an alert of goodbye shows up.)
+        // NULL CHECK HERE MUST BE RUN (and thus exit the program) with return as well to avoid an error.
         if (playerSelection === null) {
             alert(`Goodbye!`);
             return;
@@ -69,15 +70,21 @@ function playRound(playerSelection, computerSelection) {
     // this code reruns the game function loop upon user entering y/n or invalid data.
     // for the prompt, in this case, a default of yes is specified. 
     const playAgain = prompt('Game over! Would you like to play again? (yes/no)', 'yes');
-        if (playAgain.toLowerCase() === 'yes' || playAgain.toLowerCase() === 'y') {
+    // NULL CHECK HERE MUST BE RUN BEFORE .toLowerCase stuff or else error will be thrown!
+        if (playAgain === null) {
+            alert(`Goodbye!`);
+            return;
+        }
+        else if (playAgain.toLowerCase() === 'yes' || playAgain.toLowerCase() === 'y') {
             console.log(`NEW GAME!`);
             // re-running the function within the function, only if "yes" is specified.
             game();
         }
         else {
             alert(`Goodbye!`);
+            return;
         }
-}
+    }
 
 game();
 

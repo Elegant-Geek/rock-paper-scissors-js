@@ -51,7 +51,7 @@ function playRound(playerSelection, computerSelection) {
   }
    
   function game() {
-    for (let i = 0; i < 5; i++) {
+    // for (let i = 0; i < 5; i++) {
         // enter user prompt option for the start of each new round:
         const playerSelection = prompt('Enter rock, paper, or scissors.');
         // if the input is NULL (aka they hit the cancel button, an alert of goodbye shows up.)
@@ -62,7 +62,7 @@ function playRound(playerSelection, computerSelection) {
         }
         const computerSelection = getComputerChoice(choices);
         playRound(playerSelection, computerSelection);
-    }
+    // }
 
     // Game over! Reset points right before a new game:
         yourPoints = 0;

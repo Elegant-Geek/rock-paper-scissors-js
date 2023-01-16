@@ -1,3 +1,4 @@
+// these changes are on the new branch
 // set up main choices array 
 let choices = ['rock', 'paper', 'scissors'];
 // declare the two point counter variables

@@ -7,6 +7,7 @@ let choices = ['rock', 'paper', 'scissors'];
 // declare the two point counter variables
 let yourPoints = 0;
 let computerPoints = 0;
+let buttonToggle = true;
 // random number generator based on length of specified array
 // This will randomize an index number ranging from 0 to "choices array length - 1" (3 for now)
 // NOTE: choices.length is 3 but math.floor stuff will return 0 to 2 not 0 to 3.
@@ -56,6 +57,28 @@ function playRound(playerSelection) {
         console.log(`Invalid input, Round forfeit.`);
     }
 
+    if (yourPoints === 5 || computerPoints === 5 ) {
+        const playAgain = prompt('Game over! Would you like to play again? (yes/no)', 'yes');
+    // NULL CHECK HERE MUST BE RUN BEFORE .toLowerCase stuff or else error will be thrown!
+         if (playAgain.toLowerCase() === 'yes' || playAgain.toLowerCase() === 'y') {
+            //reset points
+            yourPoints = 0;
+            computerPoints = 0;
+            console.log(`NEW GAME!`);
+            // re-running the function within the function, only if "yes" is specified.
+            playRound(playerSelection);
+        }
+        else {
+            yourPoints = 0;
+            computerPoints = 0;
+            //disable button clicking on page unless yes is typed in.
+            buttonToggle = false;
+            alert(`Goodbye!`);
+            return buttonToggle;
+
+        }
+    }
+
   }
    
   function game() {
@@ -69,39 +92,30 @@ function playRound(playerSelection) {
     // }
 
     // Game over! Reset points right before a new game:
-        yourPoints = 0;
-        computerPoints = 0;
+        
     
     // this code reruns the game function loop upon user entering y/n or invalid data.
     // for the prompt, in this case, a default of yes is specified. 
-    const playAgain = prompt('Game over! Would you like to play again? (yes/no)', 'yes');
-    // NULL CHECK HERE MUST BE RUN BEFORE .toLowerCase stuff or else error will be thrown!
-        if (playAgain === null) {
-            alert(`Goodbye!`);
-            return;
-        }
-        else if (playAgain.toLowerCase() === 'yes' || playAgain.toLowerCase() === 'y') {
-            console.log(`NEW GAME!`);
-            // re-running the function within the function, only if "yes" is specified.
-            game();
-        }
-        else {
-            alert(`Goodbye!`);
-            return;
-        }
+    
     }
 
     // buttons is a node list. It looks and acts much like an array.
-const buttons = document.querySelectorAll('button');
-
+const buttons = document.querySelectorAll('div.container button');
 // we use the .forEach method to iterate through each button
 buttons.forEach((button) => {
 
   // and for each one we add a 'click' listener
   button.addEventListener('click', () => {
-   let playerSelection = button.id;
-    console.log(playerSelection);
-    playRound(playerSelection);
+    if (buttonToggle === false) {
+        return;
+    }
+    else {
+        let playerSelection = button.id;
+        console.log(playerSelection);
+        playRound(playerSelection);
+
+    }
+
   });
 });
 

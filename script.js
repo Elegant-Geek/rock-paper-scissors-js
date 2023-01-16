@@ -1,3 +1,6 @@
+
+
+
 // these changes are on the new branch
 // set up main choices array 
 let choices = ['rock', 'paper', 'scissors'];
@@ -15,7 +18,12 @@ function getComputerChoice(array) {
     return computerChoice;
 }
 
-function playRound(playerSelection, computerSelection) {
+function playRound(playerSelection) {
+    if (playerSelection === null) {
+        alert(`Goodbye!`);
+        return;
+    }
+    const computerSelection = getComputerChoice(choices);
     if (playerSelection.toLowerCase() === 'rock' || playerSelection.toLowerCase() === 'paper' || playerSelection.toLowerCase() === 'scissors') {
         playerSelection = playerSelection.toLowerCase();
         // UNCOMMENT THESE TWO LINES FOR MORE FEEDBACK IN CONSOLE! <<---------------------
@@ -53,15 +61,11 @@ function playRound(playerSelection, computerSelection) {
   function game() {
     // for (let i = 0; i < 5; i++) {
         // enter user prompt option for the start of each new round:
-        const playerSelection = prompt('Enter rock, paper, or scissors.');
+        // const playerSelection = prompt('Enter rock, paper, or scissors.');
         // if the input is NULL (aka they hit the cancel button, an alert of goodbye shows up.)
         // NULL CHECK HERE MUST BE RUN (and thus exit the program) with return as well to avoid an error.
-        if (playerSelection === null) {
-            alert(`Goodbye!`);
-            return;
-        }
-        const computerSelection = getComputerChoice(choices);
-        playRound(playerSelection, computerSelection);
+
+        playRound(playerSelection);
     // }
 
     // Game over! Reset points right before a new game:
@@ -87,8 +91,18 @@ function playRound(playerSelection, computerSelection) {
         }
     }
 
-game();
+    // buttons is a node list. It looks and acts much like an array.
+const buttons = document.querySelectorAll('button');
 
+// we use the .forEach method to iterate through each button
+buttons.forEach((button) => {
 
+  // and for each one we add a 'click' listener
+  button.addEventListener('click', () => {
+   let playerSelection = button.id;
+    console.log(playerSelection);
+    playRound(playerSelection);
+  });
+});
 
-
+    // game();

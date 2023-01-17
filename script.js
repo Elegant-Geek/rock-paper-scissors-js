@@ -5,6 +5,16 @@ let choices = ['rock', 'paper', 'scissors'];
 let yourPoints = 0;
 let computerPoints = 0;
 let buttonToggle = true;
+// creating two p tags to hold the score
+const yourScore = document.querySelector('#your-score');
+const yourPointsDOM = document.createElement('p');
+yourPointsDOM.textContent = `Your Score: ${yourPoints}`;
+yourScore.appendChild(yourPointsDOM);
+const computerScore= document.querySelector('#computer-score');
+const computerPointsDOM = document.createElement('p');
+computerPointsDOM.textContent = `Computer Score: ${computerPoints}`;
+computerScore.appendChild(computerPointsDOM);
+
 // random number generator based on length of specified array
 // This will randomize an index number ranging from 0 to "choices array length - 1" (3 for now)
 // NOTE: choices.length is 3 but math.floor stuff will return 0 to 2 not 0 to 3.
@@ -16,11 +26,19 @@ function getComputerChoice(array) {
     return computerChoice;
 }
 
+function addPointDisplay() {
+    if (yourPoints >= 0 || computerPoints >=0 ) {
+        yourPointsDOM.textContent = `Your Score: ${yourPoints}`;
+        computerPointsDOM.textContent = `Computer Score: ${computerPoints}`;
+    }
+}
+
 function playRound(playerSelection) {
     if (playerSelection === null) {
         alert(`Goodbye!`);
         return;
     }
+    
     const computerSelection = getComputerChoice(choices);
     if (playerSelection.toLowerCase() === 'rock' || playerSelection.toLowerCase() === 'paper' || playerSelection.toLowerCase() === 'scissors') {
         playerSelection = playerSelection.toLowerCase();
@@ -47,14 +65,27 @@ function playRound(playerSelection) {
     
     // very last end of round is displaying the updated score.
      console.log(`Your score: ${yourPoints} Computer's score: ${computerPoints}`);
+    addPointDisplay();
+
 
     // else statement if anything but rock paper or scissors is not input (cancel button prompt/input 'null' case is caught in game function instead.)
     } else {
         alert("Please input a valid entry of: 'rock', 'paper', or 'scissors'. Round forfeit.");
         console.log(`Invalid input, Round forfeit.`);
     }
+   
 
     if (yourPoints === 5 || computerPoints === 5 ) {
+        if (yourPoints > computerPoints) {
+            console.log(`YOU WIN THE GAME!`);
+        }
+        else if (yourPoints < computerPoints) {
+            console.log(`YOU LOST THE GAME!`);
+        }
+        else { console.log(`Something is wrong...`);
+        }
+        
+
         const playAgain = prompt('Game over! Would you like to play again? (yes/no)', 'yes');
         // NULL CHECK (!playAgain) MUST BE RUN BEFORE .toLowerCase stuff or else error will be thrown!
 
@@ -70,30 +101,14 @@ function playRound(playerSelection) {
             //reset points
             yourPoints = 0;
             computerPoints = 0;
+            addPointDisplay();
             console.log(`NEW GAME!`);
 
         }
   }
+
 }
-  function game() {
-    // for (let i = 0; i < 5; i++) {
-        // enter user prompt option for the start of each new round:
-        // const playerSelection = prompt('Enter rock, paper, or scissors.');
-        // if the input is NULL (aka they hit the cancel button, an alert of goodbye shows up.)
-        // NULL CHECK HERE MUST BE RUN (and thus exit the program) with return as well to avoid an error.
 
-        playRound(playerSelection);
-    // }
-
-    // Game over! Reset points right before a new game:
-        
-    
-    // this code reruns the game function loop upon user entering y/n or invalid data.
-    // for the prompt, in this case, a default of yes is specified. 
-    
-    }
-
-    // buttons is a node list. It looks and acts much like an array.
 const buttons = document.querySelectorAll('div.container button');
 // we use the .forEach method to iterate through each button
 buttons.forEach((button) => {
@@ -106,7 +121,7 @@ buttons.forEach((button) => {
     }
     else {
         let playerSelection = button.id;
-        console.log(playerSelection);
+        // console.log(playerSelection);
         playRound(playerSelection);
 
     }
@@ -114,4 +129,3 @@ buttons.forEach((button) => {
   });
 });
 
-    // game();

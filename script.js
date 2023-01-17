@@ -59,28 +59,25 @@ function playRound(playerSelection) {
 
     if (yourPoints === 5 || computerPoints === 5 ) {
         const playAgain = prompt('Game over! Would you like to play again? (yes/no)', 'yes');
-    // NULL CHECK HERE MUST BE RUN BEFORE .toLowerCase stuff or else error will be thrown!
-         if (playAgain.toLowerCase() === 'yes' || playAgain.toLowerCase() === 'y') {
-            //reset points
-            yourPoints = 0;
-            computerPoints = 0;
-            console.log(`NEW GAME!`);
-            // re-running the function within the function, only if "yes" is specified.
-            playRound(playerSelection);
-        }
-        else {
+        // NULL CHECK (!playAgain) MUST BE RUN BEFORE .toLowerCase stuff or else error will be thrown!
+
+        if ((!playAgain) || (!(playAgain.toLowerCase() === 'yes' || playAgain.toLowerCase() === 'y')))  {
             yourPoints = 0;
             computerPoints = 0;
             //disable button clicking on page unless yes is typed in.
             buttonToggle = false;
-            alert(`Goodbye!`);
-            return buttonToggle;
+            alert(`Goodbye! \nChange your mind? Refresh the page for new game.`);
+        }
+
+         else {
+            //reset points
+            yourPoints = 0;
+            computerPoints = 0;
+            console.log(`NEW GAME!`);
 
         }
-    }
-
   }
-   
+}
   function game() {
     // for (let i = 0; i < 5; i++) {
         // enter user prompt option for the start of each new round:

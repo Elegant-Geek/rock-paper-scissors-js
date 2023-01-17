@@ -1,6 +1,3 @@
-
-
-
 // these changes are on the new branch
 // set up main choices array 
 let choices = ['rock', 'paper', 'scissors'];
@@ -104,6 +101,7 @@ buttons.forEach((button) => {
   // and for each one we add a 'click' listener
   button.addEventListener('click', () => {
     if (buttonToggle === false) {
+        console.log('Refresh the page to play again.')
         return;
     }
     else {

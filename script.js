@@ -1,7 +1,7 @@
 // set up main choices array 
 let choices = ['rock', 'paper', 'scissors'];
 // you get to change the amount of points each round is played to with this variable ("first to 5 etc")
-let maxPoints = 3;
+let maxPoints = 5;
 // declare the two point counter variables
 let yourPoints = 0;
 let computerPoints = 0;

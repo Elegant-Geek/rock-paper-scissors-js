@@ -54,14 +54,14 @@ function playRound(playerSelection) {
     if (playerSelection === 'rock' && computerSelection === 'scissors' || playerSelection === 'paper' && computerSelection === 'rock'|| playerSelection === 'scissors' && computerSelection === 'paper') {
         // add to your tally if you win
         yourPoints += 1; 
-        console.log(`You win! ${playerSelection} beats ${computerSelection}.`); 
+        console.log(`You win, ${playerSelection} beats ${computerSelection}.`); 
         resultDOM.textContent = `You win, ${playerSelection} beats ${computerSelection}.`;
     } 
     
     else if (computerSelection === 'rock' && playerSelection === 'scissors' || computerSelection === 'paper' && playerSelection === 'rock'|| computerSelection === 'scissors' && playerSelection === 'paper') {
         // add to computer tally if computer wins
         computerPoints += 1;
-        console.log(`You lose! ${computerSelection} beats ${playerSelection}.`); 
+        console.log(`You lose, ${computerSelection} beats ${playerSelection}.`); 
         resultDOM.textContent = `You lose, ${computerSelection} beats ${playerSelection}.`;
     }
     
